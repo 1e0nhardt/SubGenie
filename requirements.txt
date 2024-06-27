@@ -1,0 +1,10 @@
+numpy==1.26.4
+rich
+tyro
+pytube
+pydub
+faster-whisper
+deep-translator
+deepmultilingualpunctuation
+dashscope
+websockets

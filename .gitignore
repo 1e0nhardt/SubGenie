@@ -1,3 +1,21 @@
+sub_genie/
+
+assets/video/*
+!assets/video/.gitkeep
+assets/final/*
+!assets/final/.gitkeep
+assets/audio/*
+!assets/audio/.gitkeep
+assets/asr_output/*
+!assets/asr_output/.gitkeep
+assets/cover_image/*
+!assets/cover_image/.gitkeep
+models/*
+!models/.gitkeep
+
+test.py
+.vscode/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
