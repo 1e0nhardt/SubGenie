@@ -1,0 +1,1 @@
+start sub_genie\Scripts\activate
