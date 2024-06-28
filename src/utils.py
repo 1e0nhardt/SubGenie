@@ -58,8 +58,8 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: EN,Resource Han Rounded CN Medium,36,&H00FFFFFF,&HF0000000,&H00000000,&H32000000,0,0,0,0,100,100,0,0,1,2,1,2,5,5,15,1
-Style: ZH,Resource Han Rounded CN Medium,68,&H00FFFFFF,&HF00000FF,&H00000000,&H32000000,-1,0,0,0,100,100,0,0,1,2,1,2,10,10,10,1
+Style: EN,Resource Han Rounded CN Regular,40,&H00FFFFFF,&HF0000000,&H00000000,&H32000000,0,0,0,0,100,100,0,0,1,2,1,2,5,5,15,1
+Style: ZH,Resource Han Rounded CN Regular,64,&H00FFFFFF,&HF00000FF,&H00000000,&H32000000,-1,0,0,0,100,100,0,0,1,2,1,2,10,10,10,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
