@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import websockets
+from rich.pretty import pprint
 
 from src.sub_genie import SubGenie, SubGenieConfig
 from src.translator import Translator
@@ -71,9 +72,9 @@ async def run_task(ws, task_dict):
         "task_progress": 0
     }))
 
-    print(f"################{task_dict['type']} {task_dict['task_id']} start!################")
+    CONSOLE.print(f"[green]Task: {task_dict['type']} {task_dict['task_id']} start!")
     ret = TASK_HANDLER_MAP.get(task_dict["type"], default_handler)(task_dict["payload"])
-    print(f"################{task_dict['type']} {task_dict['task_id']} done!################")
+    CONSOLE.print(f"[green]Task: {task_dict['type']} {task_dict['task_id']} done!")
     
     await ws.send(json.dumps({
         "type": task_dict["type"],
@@ -86,10 +87,11 @@ async def run_task(ws, task_dict):
 async def server(ws):
     async for msg in ws:
         CONSOLE.rule("Msg from client", style="bold blue")
-        CONSOLE.print(f"Msg from client: {msg}")
-        CONSOLE.rule(style="bold blue")
         # 防止路径问题, '\\' 如果被当参数传两次，第一次会正确解析，第二次就会出错
         msg_dict = json.loads(msg.replace("\\\\", "/"))
+        CONSOLE.print("Msg from client")
+        pprint(msg_dict)
+        CONSOLE.rule(style="bold blue")
 
         try:
             if msg_dict["type"] in TASK_HANDLER_MAP.keys():
