@@ -106,13 +106,13 @@ class SubGenie:
                     and file.stem in [f.stem for f in video_files])
         asr_output_files = list(filter(filter_list_file, asr_output_files))
         if self.config.skip_translate or not dashscope.api_key:
+            return
             if not dashscope.api_key:
                 LOGGER.warning("Dashscope api key not set, skip translate")
             for file in asr_output_files:
                 if not file.with_stem(file.stem + "_zh").exists():
                     with file.with_stem(file.stem + "_zh").open("w", encoding="utf-8") as f:
                         f.write("")
-            return
 
         CONSOLE.rule('字幕翻译')
         for file in asr_output_files:

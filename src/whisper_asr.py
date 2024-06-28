@@ -139,7 +139,7 @@ class WhisperAsr:
             if len(new_words) != len(sentence_words):
                 # user-friendly <--> user,-friendly | itch.io <--> itch,.io
                 # pop-up.tscn <--> pop,-up,.tscn | control-alt-o <--> control,-alt,-o
-                LOGGER.warn(f"Punctuation Error: {len(new_words)} != {len(sentence_words)}. Try fix.")
+                # LOGGER.warn(f"Punctuation Error: {len(new_words)} != {len(sentence_words)}. Try fix.")
                 i = len(sentence_words) - 1
                 while i > 0:
                     if sentence_words[i].word[0] != " ":
