@@ -223,7 +223,11 @@ def qwen_translate(content: str, model="qwen-max") -> str:
 
 
 def get_timestamp(t, ass=True):
-    """1234.12 -> xx:xx:xx,xxx (h:m:s,ms)"""
+    """
+    Convert seconds to timestamp string.
+    ass 1234.12 -> xx:xx:xx.xx  (h:m:s.ms)
+    srt 1234.12 -> xx:xx:xx,xxx (h:m:s,ms)
+    """
     t = float(t)
     seconds = int(t)
     ms = t - seconds
@@ -237,6 +241,21 @@ def get_timestamp(t, ass=True):
     else:
         ms = f'{round(ms, 3):.3f}'[2:]
         return f'{hours:02d}:{minutes:02d}:{seconds:02d},{ms}'
+
+def timestamp_to_seconds(time_str: str, ass=True) -> float:
+    """
+    Convert timestamp string to seconds.
+    ass [00:02:45.678] -> 165.678
+    srt [00:02:45,678] -> 165.678
+    """
+    if ass:
+        hours, minutes, seconds = map(float, time_str.split(':'))
+        return hours * 3600 + minutes * 60 + seconds
+    else:
+        hms, ms = time_str.split(',')
+        hours, minutes, seconds = map(float, hms.split(':'))
+        return hours * 3600 + minutes * 60 + seconds + float(ms) / 1000
+
 
 
 def filter_files(path: Union[Path|str], filter_str) -> list[Path]:
